@@ -1,0 +1,7 @@
+This project is to create a firefox extension that will
+prompt for credentials if none are stored and use the
+credentials to retrieve a list of documents that user
+has in Google Docs.
+
+The Base_NonPlugin directory contains the PHP and
+Javascript code for the Greasemonkey application.
