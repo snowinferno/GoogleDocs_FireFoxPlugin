@@ -1,4 +1,9 @@
 <?php
+# Author: Greg Wilburn
+#
+# Use provided credentials to authenticate with Google Docs and
+# return HTML code for the GreaseMonkey script to display
+
 header( 'content-type: text/xml' );
 header( 'Cache-Control: no-cache, must-revalidate' );
 header( 'Expires: Sun, 20 Jun 1982 05:00:00 GMT' );
