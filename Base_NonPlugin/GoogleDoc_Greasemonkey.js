@@ -4,8 +4,8 @@
 // @include        http*://www.google.com*
 // ==/UserScript==
 
-	var userName,//="gwilb.ad@gmail.com",
-    	password,//="4cx10m00";
+	var userName,
+    	password,
     	del,
     	localStore;
 
