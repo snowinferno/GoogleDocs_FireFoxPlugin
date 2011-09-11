@@ -4,8 +4,8 @@
 // @include        http*://www.google.com*
 // ==/UserScript==
 
-	var userName,//="gwilb.ad@gmail.com",
-    	password,//="4cx10m00";
+	var userName,
+    	password,
     	del,
     	localStore;
 
@@ -29,13 +29,7 @@
 					}
 				},
 				credStored: function(){
-					if( checkLocal() ){
-						return this.storage.getItem('userName') !== null && this.storage.getItem( 'password' ) !== null;
-					} else if( GM_getValue ){
-						return GM_getValue( 'userName' ) !== undefined && GM_getValue( 'password' ) !== undefined;
-					} else {
-						return false;
-					}
+					return this.getter('userName') !== null && this.getter('password');
 				},
 				storeCred: function( key, value ){
 					this.setter( key, value );
