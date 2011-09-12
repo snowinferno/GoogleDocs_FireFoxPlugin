@@ -41,7 +41,6 @@ function getList(){
 		    'GData-Version': '3.0'
 		},
 //		method: 'POST',
-//		content: 'Email=gwilb.ad@gmail.com&Passwd=4cx10m00&accountType=HOSTED_OR_GOOGLE&service=writely&source=googleDocs@gwilburn.com',
 		content: 'Email=gwilb.ad@gmail.com&Passwd=XXXXXXXXX&accountType=HOSTED_OR_GOOGLE&service=writely&source=googleDocs@gwilburn.com',
 /*		content: { Email: 'gwilb.ad@gmail.com',
 			   Passwd: 'XXXXXXXXX',
