@@ -20,12 +20,13 @@ function getList(){
 	headers: {
 	    'GData-Version': '3.0'
 	},
-	conent: { Email: 'gwilb.ad@gmail.com',
-		  Passwd: 'XXXXXXXXX',
+	content: { Email: 'gwilb.ad@gmail.com',
+		  Passwd: 'XXXXXXXXXXXX',
 		  accountType: 'HOSTED_OR_GOOGLE',
 		  service: 'writely',
 		  source: 'googleDocs@gwilburn.com' },
         onComplete: function( resp ){
+	    console.log( resp.text );
             var re = /Auth=([a-z0-9_\-]+)/i;
             authCode = re.exec( resp.text )[0].split('=')[1];
 
@@ -35,16 +36,13 @@ function getList(){
 		    'Authorization': 'GoogleLogin auth=' + authCode,
 		    'GData-Version': '3.0'
 		},
-		content: { Email: 'gwilb.ad@gmail.com',
-			   Passwd: 'XXXXXXXXX',
-			   accountType: 'HOSTED_OR_GOOGLE',
-			   service: 'writely',
+		content: { service: 'writely',
 			   source: 'googleDocs@gwilburn.com' },
 		onComplete: function( resp ) {
 		    console.log( resp.text );
 		}
 	    } );
-	    list.post();
+	    list.get();
         }
     });
     auth.post();
