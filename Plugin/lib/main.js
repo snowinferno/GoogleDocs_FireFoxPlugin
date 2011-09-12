@@ -1,5 +1,6 @@
 const widgets = require("widget");
 const tabs = require("tabs");
+const net = require("request");
 
 var widget = widgets.Widget({
   id: "mozilla-link",
@@ -12,42 +13,33 @@ var widget = widgets.Widget({
 });
 
 function getList(){
-    var request = require( "request" ).Request;
     var authCode = "";
-    var auth = request({
+    var auth = net.Request({
         url: 'https://www.google.com/accounts/ClientLogin',
         method: 'POST',
-        content: 'Email=gwilb.ad@gmail.com&Passwd=XXXXXXX&accountType=HOSTED_OR_GOOGLE&service=writely&source=googleDocs@gwilburn.com',
 	headers: {
 	    'GData-Version': '3.0'
 	},
-/*	conent: { Email: 'gwilb.ad@gmail.com',
-		  Passwd: 'XXXXXXXXXX',
+	conent: { Email: 'gwilb.ad@gmail.com',
+		  Passwd: 'XXXXXXXXX',
 		  accountType: 'HOSTED_OR_GOOGLE',
 		  service: 'writely',
-		  source: 'googleDocs@gwilburn.com' },*/
+		  source: 'googleDocs@gwilburn.com' },
         onComplete: function( resp ){
             var re = /Auth=([a-z0-9_\-]+)/i;
-//            console.log( resp.text );
             authCode = re.exec( resp.text )[0].split('=')[1];
 
-	    var hdr = { 'GData-Version': '3.0' };
-	    hdr['Authorization'] = authCode;
-	    var list = request( {
-//		url: 'https://docs.google.com/feeds/default/private/full',
-		url: 'http://www.gwilburn.com/headers.php',
+	    var list = net.Request( {
+		url: 'https://docs.google.com/feeds/default/private/full',
 		headers: {
 		    'Authorization': 'GoogleLogin auth=' + authCode,
 		    'GData-Version': '3.0'
 		},
-//		method: 'POST',
-		content: 'Email=gwilb.ad@gmail.com&Passwd=XXXXXXXXX&accountType=HOSTED_OR_GOOGLE&service=writely&source=googleDocs@gwilburn.com',
-/*		content: { Email: 'gwilb.ad@gmail.com',
+		content: { Email: 'gwilb.ad@gmail.com',
 			   Passwd: 'XXXXXXXXX',
 			   accountType: 'HOSTED_OR_GOOGLE',
 			   service: 'writely',
-			   source: 'googleDocs@gwilburn.com' },*/
-		contentType: 'text/plain',
+			   source: 'googleDocs@gwilburn.com' },
 		onComplete: function( resp ) {
 		    console.log( resp.text );
 		}
